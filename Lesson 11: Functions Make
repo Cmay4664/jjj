@@ -1,0 +1,36 @@
+var quote = "";
+var fontFamily = "";
+var color = " lightgray ";
+var fontSize = 20;
+// color drop menue
+onEvent("quoteInput", "click", function( ) {
+  quote = getText("quoteInput");
+  updatescreen();
+});
+
+// Font family drop menue
+onEvent("fontFamilyInput", "change", function( ) {
+  fontFamily = getText("fontFamilyInput");
+  updatescreen();
+});
+onEvent("colorInput", "click", function( ) {
+  color = getText("colorInput");
+  updatescreen();
+});
+onEvent("fontSizeInput", "click", function( ) {
+  fontSize = getNumber("fontSizeInput");
+  updatescreen();
+});
+function updatescreen() {
+  setText("quoteOutput", quote);
+  setProperty("quoteOutput", "font-family", fontFamily);
+  setProperty("colorOutput", "background-color", color);
+  setProperty("quoteOutput", "font-size", fontSize);
+  if (color == "lavender" && fontFamily == "Lucida Sans") {
+    setText("feedbackOutput", "Great combo!");
+  } else if ((color == "lightgreen" && fontSize == 20)) {
+    setText("feedbackOutput", "Looking fresh!");
+  } else {
+    setText("feedbackOutput", "Nice design");
+  }
+}
